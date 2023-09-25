@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!form.valid"
+          style="margin-right:  15px;">Save</button>
+          <button
+          type="button"
+          (click)="onCancel()"
+          class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-xs-12">
+          <label for="name">Project Name</label>
+          <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+          name="name"
+          placeholder="name">
+        </div>
+      </div>
+      <div class="row row-margin">
+        <div class="col-xs-12">
+          <label for="description">Project Description</label>
+          <input
+          type="text"
+          class="form-control"
+          id="description"
+          formControlName="description"
+          name="description"
+          placeholder="description">
+        </div>
+      </div>
+      <div formArrayName="persons">
+        <div
+        class="row row-margin"
+        *ngFor="let personsCtrl of getPersonControls(); let i = index"
+        [formGroupName]="i">
+          <div class="col-sm-5">
+            <input
+            type="text"
+            class="form-control"
+            id="empName"
+            formControlName="name"
+            placeholder="Person Name">
+          </div>
+          <div class="col-sm-5">
+            <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Person Email">
+          </div>
+          <div class="col-sm-2">
+            <button
+            type="button"
+            (click)="onRemovePerson(i)"
+            class="btn btn-danger">X</button>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-success" (click)="onPersonAdd()">Add Person</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

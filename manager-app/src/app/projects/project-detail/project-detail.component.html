@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>{{ project.name }}</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-group" role="group" appDropdown>
+            <button type="button" class="btn btn-primary dropdown-toggle">
+                Manage Project
+            </button>
+
+            <ul class="dropdown-menu dropdown-option-list">
+                <li>
+                    <a
+                    (click)="addPeopleToList()"
+                    class="dropdown-item"
+                    style="cursor: pointer;">Add people to list</a>
+                    <a
+                    style="cursor: pointer;"
+                    class="dropdown-item"
+                    (click)="editProject()">Edit project</a>
+                    <a
+                    style="cursor: pointer;"
+                    (click)="deleteProject()"
+                    class="dropdown-item">Delete project</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {{ project.description }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let person of project.persons">
+            {{ person.name }} ({{ person.email }})
+          </li>
+        </ul>
+    </div>
+</div>

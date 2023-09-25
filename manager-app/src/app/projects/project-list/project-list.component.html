@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-success" (click)="newProject()">New Project</button>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-12">
+        <app-project-item
+        *ngFor="let projectEl of projects; let i = index"
+        [project]="projectEl"
+        [index]="i"></app-project-item>
+    </div>
+</div>
+

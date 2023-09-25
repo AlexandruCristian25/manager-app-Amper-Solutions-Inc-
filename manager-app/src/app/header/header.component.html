@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 15px;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Amper Solutions Inc</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item" *ngIf="!isAuthenticated"><a routerLink="/auth" class="nav-link" routerLinkActive="active">Authentication</a></li>
+                <li class="nav-item" *ngIf="isAuthenticated"><a routerLink="/projects" class="nav-link" routerLinkActive="active">Projects</a></li>
+                <li class="nav-item" *ngIf="isAuthenticated"><a [routerLink]="['/people']" class="nav-link" routerLinkActive="active">People</a></li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+              <!-- <li class="nav-item">
+                <a class="nav-link" style="cursor: pointer;" (click)="doLogin()">LogIn</a>
+              </li> -->
+                <li class="nav-item" appDropdown *ngIf="isAuthenticated">
+                  <a class="nav-link" style="cursor: pointer;" (click)="doLogout()">Logout</a>
+                </li>
+                <li class="nav-item dropdown" appDropdown *ngIf="isAuthenticated">
+                    <a class="nav-link dropdown-toggle" role="button">Data</a>
+                    <ul class="dropdown-menu">
+                        <li><a
+                          style="cursor: pointer;"
+                          class="dropdown-item"
+                          (click)="saveData()">Save</a></li>
+                        <li><a
+                          style="cursor: pointer;"
+                          class="dropdown-item"
+                          (click)="getData()">Get</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>

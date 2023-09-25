@@ -1,0 +1,58 @@
+<div class="row d-flex justify-content-center">
+
+  <div class="col-md-6">
+    <app-alert [message]="error" *ngIf="error" (close)="handleError()"></app-alert>
+    <!-- <div class="alert alert-danger" *ngIf="error">
+      {{ error }}
+    </div> -->
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    </div>
+    <h1 style="margin-top: 50px; color: red; font-weight: bold">Welcome to Amper Solutions Inc</h1>
+    <form #form1="ngForm" (ngSubmit)="onSubmit(form1)" *ngIf="!loading">
+      <div style="margin-top: 90px;">
+        <label for="email">Email</label>
+        <input
+        type="text"
+        id="email"
+        ngModel
+        name="email"
+        required
+        placeholder="Email"
+        email
+        class="form-control">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input
+        type="password"
+        id="password"
+        required
+        placeholder="Password"
+        minlength="6"
+        name="password"
+        ngModel
+        class="form-control">
+      </div>
+      <div style="margin-top: 20px;">
+        <button
+        type="submit"
+        [disabled]="!form1.valid"
+        class="btn btn-primary">
+        {{ loginAuthMode ? 'Login' : 'Sign up' }}
+      </button>
+        <button
+        type="button"
+        (click)="changeAuthMode()"
+        class="btn btn-primary"
+        style="margin-left: 20px;">
+        {{ loginAuthMode? 'Sign up' : 'Login' }}
+      </button>
+      </div>
+    </form>
+  </div>
+</div>
+
